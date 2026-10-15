@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lounigeek — E-commerce Geek & Action Figures Originais do Japão</title>
+  
+  <!-- SEO & Metatags -->
+  <meta name="description" content="Lounigeek é a sua loja geek premium no Brasil. Action figures 100% originais importados do Japão, mangás de luxo em português, camisetas e colecionáveis selecionados de fã para fã.">
+  <meta name="keywords" content="action figures japão, mangás pt-br, loja geek, cultura pop, anime, lounigeek, colecionáveis, bandai, banpresto, one piece, naruto, demon slayer">
+  <meta name="author" content="Lounigeek">
+  
+  <!-- Open Graph / Redes Sociais -->
+  <meta property="og:title" content="Lounigeek — O universo geek mais perto de você">
+  <meta property="og:description" content="Action figures originais lacrados do Japão, mangás em PT-BR e colecionáveis para quem vive a cultura pop.">
+  <meta property="og:image" content="assets/hero/hero-desktop.webp">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#23215F">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo-lounigeek.svg">
+
+  <!-- Estilos Principais -->
+  <link rel="stylesheet" href="styles/main.css">
+
+  <!-- GSAP 3 & ScrollTrigger para Animações Fluidas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Dados Estruturados Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Lounigeek",
+    "description": "Loja especializada em action figures originais importados do Japão e mangás em português.",
+    "url": "https://lounigeek.com.br",
+    "logo": "assets/icons/logo-lounigeek.svg",
+    "priceRange": "$$",
+    "paymentAccepted": "Pix, Cartão de Crédito, Boleto",
+    "currenciesAccepted": "BRL"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ========================================================================
+       TOPBAR TICKER & AVISOS (MARQUEE INFINITO)
+       ======================================================================== -->
+  <aside class="topbar-ticker" aria-label="Avisos e Destaques">
+    <div class="topbar-inner">
+      <div class="ticker-marquee">
+        <span class="ticker-item">
+          <span class="ticker-badge-live">Ao Vivo</span>
+          🌸 <strong>Frete Grátis</strong> para todo o Brasil em compras acima de R$ 299
+        </span>
+        <span class="ticker-item">
+          ✨ Produtos <strong>100% Originais</strong> importados do Japão com selo de autenticidade
+        </span>
+        <span class="ticker-item">
+          ⚡ <strong>5% de Desconto Imediato</strong> no Pix ou até <strong>10x sem juros</strong> no cartão
+        </span>
+        <span class="ticker-item">
+          🎁 Use o cupom <strong>GEEK10</strong> e ganhe 10% OFF no seu primeiro pedido
+        </span>
+        <!-- Duplicação para loop contínuo -->
+        <span class="ticker-item">
+          <span class="ticker-badge-live">Ao Vivo</span>
+          🌸 <strong>Frete Grátis</strong> para todo o Brasil em compras acima de R$ 299
+        </span>
+        <span class="ticker-item">
+          ✨ Produtos <strong>100% Originais</strong> importados do Japão com selo de autenticidade
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       1. HEADER STICKY GLASSMORPHIC
+       ======================================================================== -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="#" class="logo-wrapper" aria-label="Lounigeek Página Inicial">
+        <img src="assets/decor/lounigeek-symbol-concept.png" alt="Selo Oficial Lounigeek" class="logo-seal-icon">
+        <img src="assets/icons/logo-lounigeek.svg" alt="Lounigeek" class="logo-img">
+      </a>
+
+      <nav class="nav-desktop" aria-label="Navegação Principal">
+        <a href="#hero" class="nav-link active">Início</a>
+        <a href="#categorias" class="nav-link">Categorias</a>
+        <a href="#destaques" class="nav-link">Destaques</a>
+        <a href="#japao" class="nav-link">Figures do Japão</a>
+        <a href="#comparativo" class="nav-link">Por Que Nós</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#contato" class="nav-link">Contato</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="action-btn" onclick="window.openSearchModal()" aria-label="Pesquisar produtos" title="Buscar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <button class="action-btn" onclick="window.filterByCategory('todos')" aria-label="Favoritos" title="Meus Favoritos">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+          </svg>
+        </button>
+
+        <button id="openCartBtn" class="action-btn" onclick="window.openCart()" aria-label="Ver Carrinho de Compras" title="Carrinho">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="8" cy="21" r="1"/>
+            <circle cx="19" cy="21" r="1"/>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+          </svg>
+          <span class="cart-badge" style="display: none;">0</span>
+        </button>
+
+        <a href="crm/index.html" class="action-btn" title="Painel CRM & Estoque" aria-label="Abrir CRM e Estoque">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="18" height="18" x="3" y="3" rx="2"/>
+            <path d="M3 9h18M9 21V9"/>
+          </svg>
+        </a>
+
+        <a href="https://wa.me/5575999550792?text=Olá!%20Gostaria%20de%20tirar%20uma%20dúvida%20sobre%20os%20colecionáveis%20da%20Lounigeek." 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="shimmer-btn btn-primary header-cta-btn">
+          <span>Atendimento VIP</span>
+        </a>
+
+        <button class="action-btn menu-toggle-btn" onclick="window.openMobileMenu()" aria-label="Abrir Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. HERO PRINCIPAL CINEMATOGRÁFICO
+       ======================================================================== -->
+  <main>
+    <section class="hero-section" id="hero">
+      <div class="hero-bg-wrapper">
+        <picture>
+          <source media="(max-width: 768px)" srcset="assets/hero/hero-mobile.webp">
+          <img src="assets/hero/hero-desktop.webp" alt="Vila Japonesa Noturna Lounigeek com Pagoda e Sakura" class="hero-bg-img">
+        </picture>
+        <div class="hero-overlay"></div>
+        <div class="hero-particles"></div>
+      </div>
+
+      <div class="container hero-container">
+        <div class="hero-content">
+          <span class="hero-tag">
+            <span>✨</span> Importação Direta do Japão
+          </span>
+          <h1 class="hero-title">
+            O universo geek <br>
+            <span class="hero-title-highlight">mais perto de você.</span>
+          </h1>
+          <p class="hero-description">
+            Action figures originais e lacrados importados de Akihabara, mangás em português com acabamento gráfico de luxo e colecionáveis selecionados de fã para fã.
+          </p>
+          
+          <div class="hero-actions">
+            <a href="#destaques" class="shimmer-btn btn-pill btn-primary">
+              <span>Explorar Coleções</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14m-7-7 7 7-7 7"/>
+              </svg>
+            </a>
+            <a href="#japao" class="btn-pill btn-secondary">
+              Conheça a Curadoria
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img src="assets/decor/decor-sakura.png" alt="Pétalas de Sakura Flutuantes" class="hero-sakura-float" aria-hidden="true">
+          <div class="hero-kanji-wrap" aria-hidden="true">夢を追え</div>
+
+          <!-- Glassmorphism Card com Selo e Prova Social -->
+          <div class="hero-glass-card">
+            <div class="hero-glass-header">
+              <img src="assets/decor/lounigeek-symbol-concept.png" alt="Selo Oficial Lounigeek" class="hero-glass-symbol">
+              <div>
+                <span class="hero-glass-tag">Selo de Autenticidade</span>
+                <strong class="hero-glass-title">100% Originais do Japão</strong>
+              </div>
+            </div>
+
+            <div class="hero-glass-stats">
+              <div>
+                <div class="hero-stat-num">+4.800</div>
+                <div class="hero-stat-label">Colecionadores Atendidos</div>
+              </div>
+              <div>
+                <div class="hero-stat-num">5.0 ★</div>
+                <div class="hero-stat-label">Avaliação dos Clientes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de 4 Benefícios Integrada -->
+      <div class="benefits-bar">
+        <div class="container">
+          <div class="benefits-grid">
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
+                  <path d="M15 18H9"/>
+                  <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/>
+                  <circle cx="17" cy="18" r="2"/>
+                  <circle cx="7" cy="18" r="2"/>
+                </svg>
+              </div>
+              <div>
+                <div class="benefit-title">Envio Seguro e Blindado</div>
+                <div class="benefit-subtitle">Caixas reforçadas de colecionador</div>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="m9 12 2 2 4-4"/>
+                </svg>
+              </div>
+              <div>
+                <div class="benefit-title">100% Originais do Japão</div>
+                <div class="benefit-subtitle">Selo Toei, Bandai e Good Smile</div>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="20" height="14" x="2" y="5" rx="2"/>
+                  <line x1="2" x2="22" y1="10" y2="10"/>
+                </svg>
+              </div>
+              <div>
+                <div class="benefit-title">Pagamento Protegido</div>
+                <div class="benefit-subtitle">Pix com 5% OFF ou até 10x sem juros</div>
+              </div>
+            </div>
+
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                  <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="benefit-title">Atendimento Especializado</div>
+                <div class="benefit-subtitle">De fã para fã via WhatsApp</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         MARQUEE DE NICHOS & UNIVERSO GEEK (HORIZONTAL SCROLL)
+         ======================================================================== -->
+    <div class="brands-ticker-section">
+      <div class="brands-marquee">
+        <span class="brand-pill">⚡ Action Figures Bandai</span>
+        <span class="brand-pill">🌸 Banpresto Originais</span>
+        <span class="brand-pill">📖 Mangás Panini em PT-BR</span>
+        <span class="brand-pill">🏮 Akihabara Direct Import</span>
+        <span class="brand-pill">⚔️ Shonen Jump Classics</span>
+        <span class="brand-pill">👑 One Piece & Naruto</span>
+        <span class="brand-pill">🔥 Demon Slayer & Jujutsu Kaisen</span>
+        <!-- Duplicação para loop infinito -->
+        <span class="brand-pill">⚡ Action Figures Bandai</span>
+        <span class="brand-pill">🌸 Banpresto Originais</span>
+        <span class="brand-pill">📖 Mangás Panini em PT-BR</span>
+        <span class="brand-pill">🏮 Akihabara Direct Import</span>
+        <span class="brand-pill">⚔️ Shonen Jump Classics</span>
+        <span class="brand-pill">👑 One Piece & Naruto</span>
+      </div>
+    </div>
+
+    <!-- ========================================================================
+         3. CATEGORIAS INTERATIVAS (CULT UI TABS)
+         ======================================================================== -->
+    <section class="categories-section" id="categorias">
+      <div class="container">
+        <div style="text-align: center; max-width: 640px; margin: 0 auto;">
+          <span class="section-tag">Navegue pelas Coleções</span>
+          <h2 class="section-title">Tudo o que você ama, em um só lugar.</h2>
+          <p class="section-subtitle">Escolha sua categoria favorita para filtrar o catálogo imediatamente.</p>
+        </div>
+
+        <div class="categories-grid" id="categoriesGrid">
+          <!-- Gerado dinamicamente via scripts/main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         4. VITRINE DE PRODUTOS COMPLETA COM FILTROS & ORDENAÇÃO
+         ======================================================================== -->
+    <section class="featured-section" id="destaques">
+      <div class="container">
+        <div class="featured-header">
+          <div>
+            <span class="section-tag">Catálogo Oficial</span>
+            <h2 class="section-title">Os Queridinhos da Galera</h2>
+            <p class="featured-subtitle">Produtos originais em pronta entrega física no Brasil.</p>
+          </div>
+
+          <button class="btn-outline" onclick="window.filterByCategory('todos')">
+            <span>Ver Todos os Itens</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14m-7-7 7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Barra de Filtros & Ordenação -->
+        <div class="catalog-filter-bar">
+          <div class="filter-chips">
+            <button class="filter-chip active" data-category="todos" onclick="window.filterByCategory('todos')">Todos</button>
+            <button class="filter-chip" data-category="action-figures" onclick="window.filterByCategory('action-figures')">Action Figures</button>
+            <button class="filter-chip" data-category="mangas" onclick="window.filterByCategory('mangas')">Mangás</button>
+            <button class="filter-chip" data-category="roupas" onclick="window.filterByCategory('roupas')">Roupas</button>
+            <button class="filter-chip" data-category="bones" onclick="window.filterByCategory('bones')">Bonés</button>
+            <button class="filter-chip" data-category="chaveiros" onclick="window.filterByCategory('chaveiros')">Chaveiros</button>
+          </div>
+
+          <div class="catalog-sort-box">
+            <label for="sortSelect">Ordenar por:</label>
+            <select id="sortSelect" class="sort-select" onchange="window.sortProducts(this.value)">
+              <option value="popular">Mais Populares</option>
+              <option value="menor-preco">Menor Preço</option>
+              <option value="maior-preco">Maior Preço</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Grid de Produtos -->
+        <div class="products-grid" id="productsGrid">
+          <!-- Renderizado via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         5. SEÇÃO EDITORIAL — ACTION FIGURES DO JAPÃO (REFERO STYLES)
+         ======================================================================== -->
+    <section class="editorial-japan-section" id="japao">
+      <div class="container">
+        <div class="editorial-card">
+          <div class="editorial-img-col">
+            <img src="assets/banners/banner-action-figures.webp" alt="Coleção Action Figures Japoneses Originais" class="editorial-main-img" loading="lazy">
+          </div>
+          
+          <div class="editorial-content-col">
+            <img src="assets/decor/lounigeek-symbol-concept.png" alt="Selo Oficial Lounigeek" class="japan-sun-watermark" aria-hidden="true">
+            
+            <div class="editorial-badge">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14"/>
+              </svg>
+              Curadoria de Colecionador
+            </div>
+            
+            <h2 class="editorial-title">Originais e importados direto de Tóquio.</h2>
+            <p class="editorial-text">
+              Aqui você tem a garantia inegociável de adquirir peças 100% autênticas, com selos oficiais de licenciamento, pintura rica em nuances e caixas intactas. Zero réplicas chinesas ou bootlegs não autorizados.
+            </p>
+
+            <div class="editorial-features">
+              <div class="editorial-feat-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Lacre de fábrica intacto</span>
+              </div>
+              <div class="editorial-feat-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Selo Toei / Bandai holográfico</span>
+              </div>
+              <div class="editorial-feat-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Embalagem tripla anti-impacto</span>
+              </div>
+              <div class="editorial-feat-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Pronta entrega já no Brasil</span>
+              </div>
+            </div>
+
+            <button class="shimmer-btn btn-pill btn-primary" onclick="window.filterByCategory('action-figures')">
+              <span>Ver Linha Completa de Figures</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14m-7-7 7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         6. SEÇÕES EDITORIAIS LADO A LADO — MANGÁS E VESTUÁRIO
+         ======================================================================== -->
+    <section class="editorial-grid-section">
+      <div class="container">
+        <div class="editorial-duo-grid">
+          <!-- Card Mangás -->
+          <div class="duo-card">
+            <div class="duo-img-box">
+              <img src="assets/banners/banner-mangas.webp" alt="Coleção de Mangás" class="duo-img" loading="lazy">
+            </div>
+            <div class="duo-content">
+              <div class="duo-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                </svg>
+                Mangás Oficiais
+              </div>
+              <h3 class="duo-title">Os melhores títulos em PT-BR.</h3>
+              <p class="duo-text">
+                Desde os clássicos Shonen até os lançamentos Seinen mais aguardados, em papel de alta gramatura e tradução oficial.
+              </p>
+              <button class="btn-pill btn-primary" onclick="window.filterByCategory('mangas')">
+                <span>Explorar Mangás</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14m-7-7 7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card Roupas & Acessórios -->
+          <div class="duo-card">
+            <div class="duo-img-box">
+              <img src="assets/banners/banner-acessorios.webp" alt="Roupas e Acessórios Geek" class="duo-img" loading="lazy">
+            </div>
+            <div class="duo-content">
+              <div class="duo-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/>
+                </svg>
+                Streetwear Geek
+              </div>
+              <h3 class="duo-title">Estilo autêntico para o dia a dia.</h3>
+              <p class="duo-text">
+                Camisetas 100% algodão penteado, bonés bordados e chaveiros metálicos pesados para demonstrar sua paixão com elegância.
+              </p>
+              <button class="btn-pill btn-primary" onclick="window.filterByCategory('roupas')">
+                <span>Ver Roupas & Bonés</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14m-7-7 7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         7. ORIGINKIT — MATRIZ COMPARATIVA ("POR QUE A LOUNIGEEK?")
+         ======================================================================== -->
+    <section class="comparison-section" id="comparativo">
+      <div class="container">
+        <div class="comparison-header">
+          <span class="section-tag">Transparência Total</span>
+          <h2 class="section-title">Por que os colecionadores confiam na Lounigeek?</h2>
+          <p class="section-subtitle">Compare nosso padrão de autenticidade e proteção de caixas com alternativas genéricas do mercado.</p>
+        </div>
+
+        <div id="comparisonContainer">
+          <!-- Renderizado dinamicamente via scripts/main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         8. SEÇÃO IDENTIDADE / COMUNIDADE & CLUBE VIP (GOJO BANNER)
+         ======================================================================== -->
+    <section class="community-section" id="comunidade">
+      <div class="container community-container">
+        <div class="community-content">
+          <span class="section-tag">Clube de Vantagens Lounigeek</span>
+          <h2 class="community-title">Mais que uma loja, o ponto de encontro da comunidade.</h2>
+
+          <div class="community-features">
+            <div class="comm-feature">
+              <div class="comm-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div>
+                <div class="comm-feat-title">Autenticidade Garantida</div>
+                <div class="comm-feat-desc">Importação direta sem intermediários duvidosos</div>
+              </div>
+            </div>
+
+            <div class="comm-feature">
+              <div class="comm-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <div>
+                <div class="comm-feat-title">Acesso Antecipado</div>
+                <div class="comm-feat-desc">Prioridade em pré-vendas de edições limitadas</div>
+              </div>
+            </div>
+
+            <div class="comm-feature">
+              <div class="comm-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+              </div>
+              <div>
+                <div class="comm-feat-title">Envio Imediato</div>
+                <div class="comm-feat-desc">Despacho no mesmo dia útil para compras até 14h</div>
+              </div>
+            </div>
+
+            <div class="comm-feature">
+              <div class="comm-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+              </div>
+              <div>
+                <div class="comm-feat-title">Paixão por Animes</div>
+                <div class="comm-feat-desc">Atendimento humanizado feito por verdadeiros fãs</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Caixa de Inscrição VIP -->
+          <div class="club-newsletter-box">
+            <span style="font-size: 0.8rem; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 1px;">Cadastre-se e Ganhe</span>
+            <h4 style="font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0.25rem 0;">10% OFF no seu primeiro pedido com o cupom GEEK10</h4>
+            <form id="clubNewsletterForm" class="club-newsletter-form">
+              <input type="email" placeholder="Digite seu melhor e-mail..." class="club-input" required>
+              <button type="submit" class="shimmer-btn btn-pill btn-primary" style="padding: 0.75rem 1.5rem;">
+                <span>Resgatar Cupom</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="community-visual">
+          <img src="assets/banners/banner-comunidade.webp" alt="Comunidade Geek Lounigeek" class="community-gojo-img" loading="lazy">
+          <div class="neon-quote-badge">
+            Geek é mais que um hobby, é um estilo de vida.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         9. AVALIAÇÕES DE CLIENTES (REVIEWS COM AVATARES VETORIAIS)
+         ======================================================================== -->
+    <section class="reviews-section" id="avaliacoes">
+      <div class="container">
+        <span class="section-tag">Prova Social de Quem Já Comprou</span>
+        <h2 class="section-title">Avaliações Verificadas de Colecionadores</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">Mais de 4.800 caixas entregues com zero avarias e nota máxima de satisfação.</p>
+
+        <div class="reviews-carousel-wrap">
+          <div class="reviews-grid" id="reviewsGrid">
+            <!-- Gerado via JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         10. ORIGINKIT — FAQ INTERATIVO EM ACORDEÃO
+         ======================================================================== -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="faq-header">
+          <span class="section-tag">Dúvidas Frequentes</span>
+          <h2 class="section-title">Tudo o que você precisa saber antes de comprar.</h2>
+          <p class="section-subtitle">Transparência absoluta sobre prazos, embalagens, garantias e procedência japonesa.</p>
+        </div>
+
+        <div class="faq-accordion" id="faqAccordion">
+          <!-- Gerado via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         11. BANNER INSTAGRAM (CLEAN PURPLE / SAKURA THEME)
+         ======================================================================== -->
+    <section class="instagram-banner-section">
+      <div class="container instagram-banner-container">
+        <div class="instagram-info-box">
+          <div class="instagram-seal-thumb">
+            <img src="assets/decor/lounigeek-symbol-concept.png" alt="Selo Oficial Lounigeek" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div>
+            <span class="instagram-tag">Junte-se à Nossa Rede</span>
+            <h3 class="instagram-title">Acompanhe novos unboxings no Instagram</h3>
+            <p class="instagram-desc">Lançamentos semanais, avisos de estoque e bastidores das nossas importações japonesas.</p>
+          </div>
+        </div>
+
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="shimmer-btn btn-pill btn-instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+          </svg>
+          <span>Seguir @lounigeek</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       12. RODAPÉ (FOOTER)
+       ======================================================================== -->
+  <footer class="footer" id="contato">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.75rem;">
+            <img src="assets/decor/lounigeek-symbol-concept.png" alt="Selo Oficial Lounigeek" style="width: 38px; height: 38px; object-fit: contain;">
+            <img src="assets/icons/logo-lounigeek-white.svg" alt="Lounigeek Logo" class="logo-img">
+          </div>
+          <p class="footer-desc">
+            Seu universo geek em um só lugar. Especialistas em action figures 100% originais japoneses e mangás em português com acabamento premium.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Navegação</h4>
+          <ul class="footer-links">
+            <li><a href="#hero" class="footer-link">Página Inicial</a></li>
+            <li><a href="#destaques" class="footer-link" onclick="window.filterByCategory('action-figures')">Action Figures</a></li>
+            <li><a href="#destaques" class="footer-link" onclick="window.filterByCategory('mangas')">Mangás Oficiais</a></li>
+            <li><a href="#destaques" class="footer-link" onclick="window.filterByCategory('roupas')">Roupas & Bonés</a></li>
+            <li><a href="#japao" class="footer-link">Selo de Autenticidade</a></li>
+            <li><a href="#faq" class="footer-link">Perguntas Frequentes</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Atendimento Especializado</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="20" height="16" x="2" y="4" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+            <span>contato@lounigeek.com.br</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <span>Segunda a Sexta: 09h às 18h</span>
+          </div>
+          <div class="footer-social-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+              </svg>
+            </a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="TikTok">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+              </svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/>
+                <polygon points="10 15 15 12 10 9 10 15"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Pagamento & Segurança</h4>
+          <div class="payment-badges">
+            <span class="pay-badge">PIX 5% OFF</span>
+            <span class="pay-badge">VISA 10X</span>
+            <span class="pay-badge">MASTERCARD</span>
+            <span class="pay-badge">BOLETO</span>
+          </div>
+          <div class="security-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <span>Ambiente 100% Criptografado SSL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Lounigeek — Todos os direitos reservados. CNPJ: 00.000.000/0001-00</div>
+        <div>Desenvolvido com <span style="color: var(--accent);">♥</span> para quem é colecionador de verdade.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       13. MOBILE CONVERSION DOCK (ORIGINKIT OBRIGATÓRIO)
+       ======================================================================== -->
+  <aside class="mobile-conversion-dock" aria-label="Ações Rápidas Mobile">
+    <div class="dock-info">
+      <span class="dock-title">Pronta Entrega Brasil</span>
+      <span class="dock-sub">
+        <span class="dock-pulse"></span> Despacho em 24h
+      </span>
+    </div>
+    <div class="dock-actions">
+      <button class="dock-cart-btn" onclick="window.openCart()" aria-label="Abrir Carrinho">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="8" cy="21" r="1"/>
+          <circle cx="19" cy="21" r="1"/>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+        </svg>
+        <span class="cart-badge" style="display: none;">0</span>
+      </button>
+
+      <a href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20um%20atendimento%20rápido%20na%20Lounigeek." 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="shimmer-btn btn-primary dock-whatsapp-btn">
+        <span>Falar no WhatsApp</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       14. MODAIS, GAVETAS & OVERLAYS
+       ======================================================================== -->
+  <div class="modal-overlay" id="modalOverlay"></div>
+
+  <!-- Carrinho Lateral Deslizante -->
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Carrinho de Compras">
+    <div class="cart-header">
+      <h3>Meu Carrinho</h3>
+      <button id="closeCartBtn" class="action-btn" onclick="window.closeCart()" aria-label="Fechar Carrinho">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Barra de Frete Grátis -->
+    <div class="cart-free-shipping-bar">
+      <div id="shippingText">Faltam <strong>R$ 299,00</strong> para liberar o <strong>Frete Grátis</strong></div>
+      <div class="shipping-progress-bg">
+        <div class="shipping-progress-fill" id="shippingProgress" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="cart-body" id="cartBody">
+      <!-- Itens do Carrinho populados dinamicamente via JS -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-subtotal-row">
+        <span>Subtotal:</span>
+        <span id="cartSubtotal" style="color: var(--accent);">R$ 0,00</span>
+      </div>
+      <button class="shimmer-btn btn-primary cart-checkout-btn" onclick="window.checkoutOrder()">
+        <span>Finalizar Pedido Seguro</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Quick View Product Modal -->
+  <div class="quick-view-modal" id="quickViewModal" role="dialog" aria-label="Detalhes da Peça">
+    <button class="modal-close-btn" onclick="window.closeQuickView()" aria-label="Fechar Modal">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    <div id="quickViewContent"></div>
+  </div>
+
+  <!-- Modal de Busca Inteligente -->
+  <div class="search-modal" id="searchModal" role="dialog" aria-label="Busca de Produtos">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+      <span style="font-size: 0.85rem; font-weight: 800; color: var(--accent); text-transform: uppercase;">Buscar no Catálogo</span>
+      <button class="action-btn" onclick="window.closeSearchModal()" aria-label="Fechar">✕</button>
+    </div>
+    <div class="search-input-box">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--secondary);">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="searchInput" placeholder="Digite o nome do personagem, anime ou mangá..." autofocus autocomplete="off">
+    </div>
+    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem;">
+      Sugestões populares: <em>Itachi, One Piece, Tanjiro, Camiseta Akatsuki, Mangás</em>
+    </p>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <aside class="cart-drawer" id="mobileMenuDrawer" style="left: -420px; right: auto;">
+    <div class="cart-header">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <img src="assets/decor/lounigeek-symbol-concept.png" alt="Selo Lounigeek" style="width: 28px; height: 28px; object-fit: contain;">
+        <img src="assets/icons/logo-lounigeek.svg" alt="Lounigeek Logo" style="height: 24px;">
+      </div>
+      <button class="action-btn" onclick="window.closeMobileMenu()" aria-label="Fechar menu">✕</button>
+    </div>
+    <div style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem;">
+      <a href="#hero" class="nav-link" onclick="window.closeMobileMenu()">Início</a>
+      <a href="#destaques" class="nav-link" onclick="window.filterByCategory('action-figures'); window.closeMobileMenu();">Action Figures</a>
+      <a href="#destaques" class="nav-link" onclick="window.filterByCategory('mangas'); window.closeMobileMenu();">Mangás Oficiais</a>
+      <a href="#destaques" class="nav-link" onclick="window.filterByCategory('roupas'); window.closeMobileMenu();">Streetwear & Bonés</a>
+      <a href="#japao" class="nav-link" onclick="window.closeMobileMenu()">Curadoria do Japão</a>
+      <a href="#comparativo" class="nav-link" onclick="window.closeMobileMenu()">Por Que a Lounigeek</a>
+      <a href="#faq" class="nav-link" onclick="window.closeMobileMenu()">Perguntas Frequentes</a>
+      <a href="#contato" class="nav-link" onclick="window.closeMobileMenu()">Fale Conosco</a>
+    </div>
+  </aside>
+
+  <!-- Container de Notificações Toast -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts da Aplicação -->
+  <script src="scripts/products.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>

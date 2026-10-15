@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="av-lucas" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C9A6E5"/>
+      <stop offset="100%" stop-color="#23215F"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="50" fill="url(#av-lucas)"/>
+  <!-- Cabeça e Ombros estilizados Geek -->
+  <circle cx="50" cy="38" r="18" fill="#FAF8FC"/>
+  <!-- Óculos geek -->
+  <rect x="36" y="34" width="11" height="8" rx="2" fill="#23215F"/>
+  <rect x="53" y="34" width="11" height="8" rx="2" fill="#23215F"/>
+  <line x1="47" y1="38" x2="53" y2="38" stroke="#23215F" stroke-width="2"/>
+  <!-- Corpo -->
+  <path d="M22 84 C24 64 36 60 50 60 C64 60 76 64 78 84 Z" fill="#FAF8FC"/>
+  <path d="M42 60 L50 72 L58 60 Z" fill="#A73178"/>
+</svg>
+
